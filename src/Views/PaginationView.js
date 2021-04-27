@@ -4,7 +4,7 @@ class PaginationView {
 
   render(data) {
     this._data = data;
-    console.log(data);
+    // console.log(data);
     const markup = this._generateMarkup();
 
     this._clear();
@@ -29,7 +29,7 @@ class PaginationView {
     const numPages = Math.ceil(
       this._data.results.length / this._data.resultsPerPage
     );
-    console.log(`Total number of pages: ${numPages}`);
+    // console.log(`Total number of pages: ${numPages}`);
 
     // If More than one page
     if (currPage === 1 && numPages > 1) {

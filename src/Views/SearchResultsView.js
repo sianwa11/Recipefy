@@ -17,9 +17,11 @@ class SearchResultsView {
 
   renderSpinner() {
     const spinner = `
+    <div style="display: flex; justify-content: center;">
       <div class="spinner-border text-dark" role="status">
         <span class="sr-only">Loading...</span>
       </div>
+    </div>  
     `;
 
     this._clear();
@@ -37,8 +39,8 @@ class SearchResultsView {
 
   _markup(el) {
     return ` 
-    <li>
-      <a href="javascript:void(0)">
+    <li class="text-muted preview">
+      <a href="#${el.id}">
         <img
           class="img-avatar"
           src="${el.image_url}"
@@ -48,6 +50,17 @@ class SearchResultsView {
 
       </a>
     </li>`;
+  }
+
+  /**
+   * Runs the model.controlRecipe function when the page is loaded
+   * and when there's a hashchange in the url
+   * @param {controlRecipe} handler
+   */
+  addHandlerRecipe(handler) {
+    ["hashchange", "load"].forEach((ev) =>
+      window.addEventListener(ev, handler)
+    );
   }
 }
 

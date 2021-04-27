@@ -17,6 +17,8 @@ export const searchRecipe = async function (query) {
     const res = await fetch(`${API_URL}?search=${query}&key=${API_KEY}`);
     const data = await res.json();
 
+    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+
     // state.search.results.push(...data.data.recipes);
     state.search.results = data.data.recipes;
 
@@ -35,11 +37,16 @@ export const getResultsPerPage = function (page = state.search.page) {
   return state.search.results.slice(start, end);
 };
 
-// fetch(
-//   `https://api.spoonacular.com/recipes/complexSearch?apiKey=1feba7fd619b4bd88e2d5f4ee37a0886`
-// )
-//   .then((res) => {
-//     console.log(res);
-//     return res.json();
-//   })
-//   .then((data) => console.log(data));
+export const getRecipe = async function (id) {
+  try {
+    const res = await fetch(`${API_URL}${id}?key=${API_KEY}`);
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+
+    state.recipe = data.data.recipe;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
