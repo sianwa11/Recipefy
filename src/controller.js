@@ -4,15 +4,19 @@ import SearchResultsView from "./Views/SearchResultsView.js";
 import SearchView from "./Views/SearchView.js";
 import PaginationView from "./Views/PaginationView.js";
 import RecipeView from "./Views/RecipeView.js";
+import BookMarksView from "./Views/BookMarkViews.js";
 
 const controlSearchResults = async function () {
   try {
-    // Render spinner
-    SearchResultsView.renderSpinner();
-
     // 1. Get the query
     const query = SearchView.getQuery();
-    if (!query) return;
+    if (query === "") {
+      alert("Input recipe.");
+      return;
+    }
+
+    // Render spinner
+    SearchResultsView.renderSpinner();
 
     // 2. Search for recipes with query
     await model.searchRecipe(query);
@@ -24,7 +28,7 @@ const controlSearchResults = async function () {
     PaginationView.render(model.state.search);
   } catch (err) {
     console.error(err.message);
-    SearchResultsView.renderError();
+    SearchResultsView.renderError(`${err.message}`);
   }
 };
 
@@ -55,12 +59,31 @@ const controlRecipe = async function () {
   }
 };
 
+const bookMarkRecipe = function (bool, recipe) {
+  // Remove bookmark from storage
+  if (!bool) {
+    model.removeBookmarks(recipe.id);
+    BookMarksView.render(model.state.bookmarks);
+    return;
+  }
+
+  // Add bookmark to storage if they do not exceed the cap of 7
+  const limitReached = model.bookMarkCap();
+  if (limitReached) return;
+
+  model.addBookmarks(recipe);
+  BookMarksView.render(model.state.bookmarks);
+};
+
 // Starting point of the application
 const init = function () {
   // This will change later
   SearchView.addHandlerSearch(controlSearchResults);
   PaginationView.addHandlerGoTo(controlPagination);
   SearchResultsView.addHandlerRecipe(controlRecipe);
+
+  BookMarksView.render(model.state.bookmarks);
+  RecipeView.addHandlerBookMarkRecipe(bookMarkRecipe);
 };
 
 init();

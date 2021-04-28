@@ -1,27 +1,28 @@
 class PaginationView {
   _data;
-  _parentEl = document.querySelector(".recipe_pagination");
+  _parentElement = document.querySelector(".recipe_pagination");
 
   render(data) {
     this._data = data;
-    // console.log(data);
     const markup = this._generateMarkup();
 
     this._clear();
-    this._parentEl.insertAdjacentHTML("afterbegin", markup);
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
   addHandlerGoTo(handler) {
-    this._parentEl.addEventListener("click", (e) => {
+    this._parentElement.addEventListener("click", (e) => {
       const btn = e.target.closest(".btn-pagination");
       const goTo = +btn.dataset.goto;
+
+      console.log(btn);
 
       handler(goTo);
     });
   }
 
   _clear() {
-    this._parentEl.innerHTML = "";
+    this._parentElement.innerHTML = "";
   }
 
   _generateMarkup() {

@@ -23,22 +23,6 @@
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
 
-    <!-- Icons -->
-    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" href="assets/media/favicons/favicon.png" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="assets/media/favicons/favicon-192x192.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="assets/media/favicons/apple-touch-icon-180x180.png"
-    />
-    <!-- END Icons -->
-
     <!-- Stylesheets -->
 
     <!-- Fonts and Codebase framework -->
@@ -148,26 +132,7 @@
                 <div class="block-content">
                   <ul class="nav-users pull-all recipes"></ul>
 
-                  <div class="recipe_pagination">
-                    <!--Start pagination buttons-->
-                    <!-- <button
-                      type="button"
-                      class="btn btn-alt-secondary float-right"
-                      data-toggle="tooltip"
-                      title="Next"
-                    >
-                      <i class="fa fa-chevron-right fa-fw"></i>
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-alt-secondary float-left"
-                      data-toggle="tooltip"
-                      title="Previous"
-                    >
-                      <i class="fa fa-chevron-left fa-fw"></i>
-                    </button> -->
-                    <!--End pagination buttons-->
-                  </div>
+                  <div class="recipe_pagination"></div>
                 </div>
               </div>
 
@@ -179,7 +144,12 @@
               <div class="block block-rounded">
                 <div class="block-content block-content-full">
                   <div class="media">
-                    <div class="media-body recipe"></div>
+                    <div class="media-body recipe">
+                      <span
+                        >Start by searching for recipes.
+                        <i class="fa fa-spoon"></i>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -192,81 +162,11 @@
               <div class="block block-rounded">
                 <div class="block-header">
                   <h3 class="block-title font-w600">Bookmarks</h3>
-                  <div class="block-options">
-                    <button
-                      type="button"
-                      class="btn-block-option"
-                      data-toggle="block-option"
-                      data-action="state_toggle"
-                      data-action-mode="demo"
-                    >
-                      <i class="si si-refresh"></i>
-                    </button>
-                    <button type="button" class="btn-block-option">
-                      <i class="si si-wrench"></i>
-                    </button>
-                  </div>
                 </div>
                 <div class="block-content block-content-full">
-                  <ul class="nav-users pull-all">
-                    <li>
-                      <a href="javascript:void(0)">
-                        <img
-                          class="img-avatar"
-                          src="assets/media/avatars/avatar5.jpg"
-                          alt=""
-                        />
-                        <i class="fa fa-circle text-success"></i> Helen Jacobs
-                        <div class="font-w400 font-size-xs text-muted">
-                          Web Designer
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)">
-                        <img
-                          class="img-avatar"
-                          src="assets/media/avatars/avatar6.jpg"
-                          alt=""
-                        />
-                        <i class="fa fa-circle text-success"></i> Carol Ray
-                        <div class="font-w400 font-size-xs text-muted">
-                          Photographer
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)">
-                        <img
-                          class="img-avatar"
-                          src="assets/media/avatars/avatar11.jpg"
-                          alt=""
-                        />
-                        <i class="fa fa-circle text-success"></i> Justin Hunt
-                        <div class="font-w400 font-size-xs text-muted">
-                          Copywriter
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)">
-                        <img
-                          class="img-avatar"
-                          src="assets/media/avatars/avatar9.jpg"
-                          alt=""
-                        />
-                        <i class="fa fa-circle text-success"></i> Thomas Riley
-                        <div class="font-w400 font-size-xs text-muted">
-                          UI Designer
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="block-content block-content-full border-t">
-                  <a href="javascript:void(0)">
-                    <i class="fa fa-users mr-5"></i> Find people you know
-                  </a>
+                  <ul class="nav-users pull-all bookmarks"></ul>
+
+                  <div class="bookmark_pagination"></div>
                 </div>
               </div>
               <!-- END Who to follow -->

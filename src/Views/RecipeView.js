@@ -42,6 +42,10 @@ class RecipeView {
             <em class="text-muted">&bull; ${
               this._data.cooking_time
             } minutes to prepare</em>
+            <button type="button" class="btn btn-lg btn-circle btn-alt-secondary mr-5 mb-5 bookmark_recipe">
+            <i class="fa
+            ${!this._data.bookmarked ? "fa-bookmark-o" : "fa-bookmark"}"></i>
+            </button>
         </p>
 
         <img
@@ -74,6 +78,30 @@ class RecipeView {
 
         
     `;
+  }
+
+  addHandlerBookMarkRecipe(handler) {
+    this._parentElement.addEventListener("click", () => {
+      this._toggleAttributes();
+
+      const bool = this._data.bookmarked;
+      const recipe = this._data;
+
+      //   console.log(bool, recipe);
+      handler(bool, recipe);
+    });
+  }
+
+  _toggleAttributes() {
+    const attr = this._parentElement.querySelector("i");
+
+    if (!this._data.bookmarked) {
+      this._data.bookmarked = true;
+      attr.setAttribute("class", "fa fa-bookmark");
+    } else {
+      this._data.bookmarked = false;
+      attr.setAttribute("class", "fa fa-bookmark-o");
+    }
   }
 }
 
